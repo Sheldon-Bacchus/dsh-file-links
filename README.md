@@ -12,7 +12,7 @@ When an agent mentions a file path in its reply, that path is just plain text. T
 
 - 🖱 **Click a path** → open the file with the system default application
 - **Right-click → Preview** → view the file content inline in a panel (text / image)
-- **Right-click → Reveal in Explorer** → open the file manager with the file selected
+- **Right-click → Reveal in Explorer** → open the file manager with the file selected *(Windows)*
 - **Right-click → Open** → same as clicking the path
 
 ## Why this one
@@ -41,7 +41,7 @@ Any path wrapped in backticks in a reply (e.g. `` `C:\project\README.md` ``) bec
 - **Left-click** the path → opens the file
 - **Right-click** the path → context menu with *Open file* / *Preview* / *Reveal in Explorer*
 
-Absolute paths, relative paths (resolved against the session workspace), and `~/` paths are supported.
+Only **absolute paths** are clickable: Windows drive paths (`C:\...`, `C:/...`), UNC paths (`\\server\share\...`), POSIX absolute paths (`/home/...`), and `~/...`. Relative paths and bare filenames stay plain text — they cannot be resolved reliably because the session records the *launch* directory as its cwd, not the agent's actual working directory.
 
 ## How it works
 
@@ -62,7 +62,7 @@ Absolute paths, relative paths (resolved against the session workspace), and `~/
 
 - **Reveal is Windows-only.** The `explorer /select,` command is a Windows shell convention. On macOS/Linux the "Reveal in Explorer" menu item will not work (open and preview still do).
 - **Preview is best-effort.** Text and common image types preview inline; PDFs, Office documents, and binaries are refused with a message (use "Open" instead).
-- **Files created indirectly by terminal commands** are not auto-listed — but any path the agent writes in backticks in the reply is clickable.
+- **Only absolute paths are clickable.** Relative paths and bare filenames are intentionally left as plain text (see Usage) — clicking them would silently fail because the session cwd is not the agent's working directory.
 
 ## License
 
