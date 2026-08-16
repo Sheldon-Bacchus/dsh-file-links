@@ -1,0 +1,12 @@
+{
+  "name": "dsh-file-links",
+  "description": "Clickable file paths in DeepSeek Harness replies: open, preview inline, or reveal in Explorer (Windows-tested).",
+  "version": "1.0.0",
+  "entry": {
+    "name": "dsh-file-links",
+    "inject": []
+  },
+  "client": {
+    "platform": "web"
+  }
+}

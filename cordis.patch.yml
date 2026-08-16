@@ -1,0 +1,4 @@
+# dsh-file-links bundle patch: mount the host plugin under its package name.
+- insert:
+    - id: file-links
+      name: dsh-file-links
